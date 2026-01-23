@@ -6,3 +6,15 @@ Content-Type: application/json
     "email": "aga@gmail.com",
     "password": "abs123"
 }
+
+### Find a User with an ID
+GET http://localhost:3000/auth/1
+
+### Find all users with an email
+GET http://localhost:3000/auth?email:aga@gmail.com
+
+### Remove User by ID
+DELETE http://localhost:3000/auth/1
+
+### Update User by ID
+PATCH http://localhost:3000/auth/1
