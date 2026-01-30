@@ -3,9 +3,21 @@ POST http://localhost:3000/auth/signup
 Content-Type: application/json
 
 {
-    "email": "aga@gmail.com",
-    "password": "abs123"
+    "email": "mehdi@gmail.com",
+    "password": "mhd123"
 }
+
+### Login User
+POST http://localhost:3000/auth/signin
+Content-Type: application/json
+
+{
+    "email": "mehdi@gmail.com",
+    "password": "mhd123"
+}
+
+### Find all Users 
+GET http://localhost:3000/auth/
 
 ### Find a User with an ID
 GET http://localhost:3000/auth/1
@@ -18,3 +30,9 @@ DELETE http://localhost:3000/auth/1
 
 ### Update User by ID
 PATCH http://localhost:3000/auth/1
+
+### Set color in session
+GET http://localhost:3000/auth/colors/blue
+
+### Get color session
+GET http://localhost:3000/auth/colors
