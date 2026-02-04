@@ -5,14 +5,16 @@ import { User } from './user.entity';
 
 @Injectable()
 export class UsersService {
-    constructor(@InjectRepository(User) private repo: Repository<User>) {}
+    constructor(@InjectRepository(User) private repo: Repository<User>) { }
 
     create(email: string, password: string) {
         const user = this.repo.create({ email, password })
         return this.repo.save(user)
-        // return this.repo.save({ email, password }) //! bu sekilde de yazmaq olar, amma bu zaman DTO type-lari yoxlamiyacaq
+        // return this.repo.save({ email, password }) 
+        //! bu sekilde de yazmaq olar, amma bu zaman DTO type-lari yoxlamiyacaq
     }
     findOne(id: number) {
+        if (!id) return null
         return this.repo.findOneBy({ id })
     }
     async findOrFail(id: number): Promise<User> {

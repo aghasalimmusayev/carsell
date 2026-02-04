@@ -26,13 +26,19 @@ GET http://localhost:3000/auth/1
 GET http://localhost:3000/auth?email:aga@gmail.com
 
 ### Remove User by ID
-DELETE http://localhost:3000/auth/1
+DELETE http://localhost:3000/auth/2
 
 ### Update User by ID
 PATCH http://localhost:3000/auth/1
 
+### Get who am I
+GET http://localhost:3000/auth/me
+
+### Signout
+POST http://localhost:3000/auth/signout
+
 ### Set color in session
-GET http://localhost:3000/auth/colors/blue
+# GET http://localhost:3000/auth/colors/blue
 
 ### Get color session
-GET http://localhost:3000/auth/colors
+# GET http://localhost:3000/auth/colors
