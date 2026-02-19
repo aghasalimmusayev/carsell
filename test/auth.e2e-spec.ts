@@ -46,4 +46,8 @@ describe('Authentication System', () => {
             .expect(200)
         expect(body.email).toEqual(email)
     })
+    afterEach(async () => {
+        await app.close();
+    });
+
 });
