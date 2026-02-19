@@ -99,7 +99,56 @@ Bu repo **NestJS + TypeORM (SQLite)** üzərində qurulmuş sadə backend nümun
 
 ### Modules / Structure
 
-
+├── src
+│   ├── decorators
+│   │   └── current-user.decorator.ts
+│   ├── guards
+│   │   └── auth.guard.ts
+│   ├── interceptors
+│   │   └── serialize.interceptor.ts
+│   ├── reports
+│   │   ├── report.entity.ts
+│   │   ├── reports.controller.spec.ts
+│   │   ├── reports.controller.ts
+│   │   ├── reports.module.ts
+│   │   ├── reports.service.spec.ts
+│   │   └── reports.service.ts
+│   ├── users
+│   │   ├── dtos
+│   │   │   ├── create-user.dto.ts
+│   │   │   ├── update-user.dto.ts
+│   │   │   └── user.dto.ts
+│   │   ├── interceptors
+│   │   │   └── current-user.interceptor.ts
+│   │   ├── auth.service.spec.ts
+│   │   ├── auth.service.ts
+│   │   ├── request.http
+│   │   ├── user.entity.ts
+│   │   ├── users.controller.spec.ts
+│   │   ├── users.controller.ts
+│   │   ├── users.module.ts
+│   │   ├── users.service.spec.ts
+│   │   └── users.service.ts
+│   ├── app.controller.spec.ts
+│   ├── app.controller.ts
+│   ├── app.module.ts
+│   ├── app.service.ts
+│   ├── main.ts
+│   └── setup-app.ts
+├── test
+│   ├── app.e2e-spec.ts
+│   ├── auth.e2e-spec.ts
+│   ├── jest-e2e.json
+│   └── setup.ts
+├── .gitignore
+├── .prettierrc
+├── README.md
+├── eslint.config.mjs
+├── myNotes.md
+├── nest-cli.json
+├── package-lock.json
+├── package.json
+└── tsconfig.json
 
 * UsersModule daxilində CurrentUserInterceptor APP_INTERCEPTOR kimi global edilib.
   Bu interceptor session.userId oxuyur və request.currentUser set edir.
