@@ -1,0 +1,18 @@
+### Create report
+POST http://localhost:3000/reports/
+Content-Type: application/json
+
+{
+    "price":20000,
+    "make":"Chevrolet",
+    "model":"impla",
+    "year":1968,
+    "lng":60,
+    "lat":70,
+    "mileage":100000
+}
+
+### Get all reports
+GET http://localhost:3000/reports
+
+
