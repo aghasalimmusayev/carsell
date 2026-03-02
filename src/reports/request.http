@@ -3,16 +3,26 @@ POST http://localhost:3000/reports/
 Content-Type: application/json
 
 {
-    "price":20000,
-    "make":"Chevrolet",
-    "model":"impla",
-    "year":1968,
-    "lng":60,
-    "lat":70,
-    "mileage":100000
+    "make": "ford",
+    "model": "mustang",
+    "year": 2001,
+    "mileage": 25000,
+    "lng": 0,
+    "lat": 0,
+    "price": 15000
 }
 
 ### Get all reports
 GET http://localhost:3000/reports
 
+### Approved existing report
+PATCH http://localhost:3000/reports/1
+Content-Type: application/json
+
+{
+    "approved": true
+}
+
+### Get an estimate for vehicle
+GET http://localhost:3000/reports/estimate?make=ford&model=mustang&lng=0&lat=0&mileage=25000&year=2002
 

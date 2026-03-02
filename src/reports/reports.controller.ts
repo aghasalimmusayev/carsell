@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, ParseIntPipe, Post, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, Param, ParseIntPipe, Patch, Post, Query, UseGuards } from '@nestjs/common';
 import { ReportsService } from './reports.service';
 import { createReportDto } from './dtos/createReportDto';
 import { AuthGuard } from 'src/guards/auth.guard';
@@ -6,11 +6,19 @@ import { CurrentUser } from 'src/decorators/current-user.decorator';
 import { User } from 'src/users/user.entity';
 import { Serialize } from 'src/interceptors/serialize.interceptor';
 import { reportDto } from './dtos/reportDto';
+import { ApprovedDto } from './dtos/approvedDto';
+import { AdminGuard } from 'src/guards/admin.guard';
+import { GetEstimateDto } from './dtos/getEstimateDto';
 
 @Controller('reports')
 export class ReportsController {
     constructor(private reportService: ReportsService) { }
-    
+
+    @Get('estimate')
+    getEstimate(@Query() query: GetEstimateDto) {
+        return this.reportService.createEstimate(query)
+    }
+
     @Post()
     @UseGuards(AuthGuard)
     @Serialize(reportDto)
@@ -22,5 +30,11 @@ export class ReportsController {
     @UseGuards(AuthGuard)
     findReports(@CurrentUser() user: User) {
         return this.reportService.getReports(user)
+    }
+
+    @Patch('/:id')
+    @UseGuards(AdminGuard)
+    updateReport(@Param('id', ParseIntPipe) id: number, @Body() body: ApprovedDto) {
+        return this.reportService.changeApproval(id, body.approved)
     }
 }

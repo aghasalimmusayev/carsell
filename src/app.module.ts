@@ -19,13 +19,6 @@ import { join } from 'path';
       envFilePath: join(__dirname, '..', `.env.${process.env.NODE_ENV ?? 'development'}`),
     }),
     ReportsModule, UsersModule,
-    // TypeOrmModule.forRoot({
-    //   type: 'sqlite',
-    //   database: 'db.sqlite',
-    //   entities: [User, Report],
-    //   synchronize: true, // true olanda migration-u avtomatik edilir, migration-a ehtiyac olmur. 
-    //   // Amma production-da false olmalidir ki db-de avtoatik migration getmesin
-    // })
     TypeOrmModule.forRootAsync({
       inject: [ConfigService],
       useFactory: (config: ConfigService) => {
@@ -33,7 +26,7 @@ import { join } from 'path';
           type: 'sqlite',
           database: config.get<string>('DB_NAME'),
           entities: [User, Report],
-          synchronize: true
+          synchronize: true //! Production-da bunu false elemek lazimdi. yoxsa her hansi bir deyisiklik butun db0ye tesir eder.
         }
       }
     })
